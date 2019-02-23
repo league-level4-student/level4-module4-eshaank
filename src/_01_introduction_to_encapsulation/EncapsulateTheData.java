@@ -16,6 +16,8 @@ package _01_introduction_to_encapsulation;
  * */
 
 public class EncapsulateTheData {
+	
+	
 	// 1. Encapsulate the member variables.
 	// Add restrictions to the setters according to the comment.
 
@@ -28,7 +30,7 @@ public class EncapsulateTheData {
 	private Object memberObj; // can be any object type except String. Strings get turned into objects.
 
 	public static void main(String[] args) {
-		
+	
 	}
 
 	public int getItemsReceived() {
@@ -78,5 +80,7 @@ public class EncapsulateTheData {
 
 		this.memberObj = memberObj;
 	}
+
+	
 
 }
