@@ -7,12 +7,12 @@ public abstract class Polymorph {
 	private int y;
 	private int width;
 	private int height;
-	
+
 	Polymorph(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	public int getWidth() {
 		return width;
 	}
@@ -45,7 +45,13 @@ public abstract class Polymorph {
 		this.y = y;
 	}
 
+	public void setMouseX(int mouseX) {
+	//	this.mouseX = mouseX;
+	}
 
+	public void setMouseY(int mouseY) {
+		//this.mouseY = mouseY;
+	}
 
 	public void update() {
 
