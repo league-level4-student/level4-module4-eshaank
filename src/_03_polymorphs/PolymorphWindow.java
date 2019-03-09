@@ -7,9 +7,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -18,6 +24,7 @@ public class PolymorphWindow extends JPanel implements ActionListener, MouseList
 	public static final int HEIGHT = 600;
 
 	private JFrame window;
+	private JLabel Label;
 	private Timer timer;
 
 	static Polymorph bluePoly;
@@ -25,6 +32,8 @@ public class PolymorphWindow extends JPanel implements ActionListener, MouseList
 	static Polymorph MovingMorph;
 	static Polymorph circleMorph;
 	static Polymorph mouseMorph;
+	static Polymorph pictureMorph;
+	static Polymorph messageMorph;
 	static ArrayList<Polymorph> polymorphs;
 
 	public static void main(String[] args) {
@@ -35,22 +44,27 @@ public class PolymorphWindow extends JPanel implements ActionListener, MouseList
 		polymorphs.add(MovingMorph);
 		polymorphs.add(circleMorph);
 		polymorphs.add(mouseMorph);
+		polymorphs.add(pictureMorph);
+		polymorphs.add(messageMorph);
 	}
 
 	public void buildWindow() {
 		window = new JFrame("IT'S MORPHIN' TIME!");
+		Label = new JLabel();
 		window.add(this);
 		window.getContentPane().setPreferredSize(new Dimension(500, 500));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.pack();
 		window.setVisible(true);
 		window.addMouseListener(this);
+		
 		bluePoly = new BluePolymorph(50, 50);
 		redPoly = new RedMorph(50, 50);
 		MovingMorph = new MovingMorph(50, 50);
 		circleMorph = new circleMorph(60, 60);
 		mouseMorph = new mouseMorph(100, 100);
-	
+		pictureMorph = new pictureMorph(75, 75);
+		messageMorph = new messageMorph(225, 75);
 		timer = new Timer(1000 / 30, this);
 		timer.start();
 	}
@@ -66,6 +80,17 @@ public class PolymorphWindow extends JPanel implements ActionListener, MouseList
 			repaint();
 	}
 		
+	}
+	
+	private JLabel Image(String fileName) throws MalformedURLException {
+		URL imageURL = getClass().getResource(fileName);
+		if (imageURL == null) {
+			System.err.println("Could not find image " + fileName);
+			return new JLabel();
+		}
+		Icon icon = new ImageIcon(imageURL);
+		JLabel imageLabel = new JLabel(icon);
+		return imageLabel;
 	}
 
 	@Override
@@ -88,6 +113,11 @@ for(Polymorph p : polymorphs) {
 		mouseMorph.setMouseX(e.getX());
 		mouseMorph.setMouseY(e.getY());
 		System.out.println("mouseEntered");
+		
+		if (e.getX() >= messageMorph.getX() && e.getX() <= 275 && e.getY() >= messageMorph.getY() && e.getY() <= 125) {
+			JOptionPane.showMessageDialog(null, "Hello");
+		}
+		System.out.println(e.getX() + ", " + e.getY());
 	}
 
 	@Override
