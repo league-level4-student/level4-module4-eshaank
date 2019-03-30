@@ -26,4 +26,21 @@ public class Hospital {
 		return patient;
 	}
 
+	public void assignPatientsToDoctors() throws Exception{ 
+	
+		int doctor = -1;
+		if (patient.size() > 3) {
+			for (int i = 0; i < patient.size(); i++) {	
+				if (i % 3 == 0) {
+					doctor++;
+				}
+					doc.get(doctor).assignPatient(patient.get(i));
+			}
+		}
+		
+		
+		
+		
+	}
+
 }

@@ -6,6 +6,7 @@ import javax.print.Doc;
 
 public class Doctor{
 	ArrayList<Patient> patient = new ArrayList<Patient>();
+	Boolean c = false;
 	public Object performsSurgery() {
 		
 		return false;
@@ -16,8 +17,14 @@ public class Doctor{
 		return false;
 	}
 
-	public void assignPatient(Patient p) {
+	public void assignPatient(Patient p) throws Exception{
+		
 		patient.add(p);
+		
+		if (patient.size() > 3) {
+			throw new Exception();
+		}
+		
 		
 	}
 
@@ -25,5 +32,13 @@ public class Doctor{
 		
 		return patient;
 	}
+
+	public void doMedicine() {
+		for (int i = 0; i < patient.size(); i++) {
+			patient.get(i).checkPulse();
+		}
+	}
+
+	
 
 }
