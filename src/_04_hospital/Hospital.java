@@ -30,12 +30,16 @@ public class Hospital {
 	
 		int doctor = -1;
 		if (patient.size() > 3) {
-			for (int i = 0; i < patient.size(); i++) {	
+			System.out.println("test");
+			for (int i = 0; i < patient.size() - 1; i++) {	
 				if (i % 3 == 0) {
 					doctor++;
+					System.out.println(doctor);
 				}
-					doc.get(doctor).assignPatient(patient.get(i));
+					
 			}
+			doc.get(doctor).getPatients();
+			
 		}
 		
 		

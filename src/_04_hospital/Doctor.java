@@ -4,32 +4,35 @@ import java.util.ArrayList;
 
 import javax.print.Doc;
 
-public class Doctor{
+public class Doctor {
 	ArrayList<Patient> patient = new ArrayList<Patient>();
 	Boolean c = false;
+
 	public Object performsSurgery() {
-		
+
 		return false;
 	}
 
 	public Object makesHouseCalls() {
-		
+
 		return false;
 	}
 
-	public void assignPatient(Patient p) throws Exception{
-		
+	public void assignPatient(Patient p) throws Exception {
 		patient.add(p);
 		
-		if (patient.size() > 3) {
+		
+			if (patient.size() > 3) {
+				
 			throw new Exception();
-		}
+			}
 		
 		
+
 	}
 
 	public ArrayList<Patient> getPatients() {
-		
+
 		return patient;
 	}
 
@@ -38,7 +41,5 @@ public class Doctor{
 			patient.get(i).checkPulse();
 		}
 	}
-
-	
 
 }

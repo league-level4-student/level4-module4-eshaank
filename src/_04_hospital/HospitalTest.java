@@ -86,8 +86,8 @@ public class HospitalTest extends TestCase {
 		testDoctor.assignPatient(new Patient());
 		testDoctor.assignPatient(new Patient());
 		testDoctor.assignPatient(new Patient());
-		//testDoctor.assignPatient(new Patient());
-		//assertTrue(false);
+		testDoctor.assignPatient(new Patient());
+		assertTrue(false);
 assertTrue(testDoctor.getPatients().size() == 3);
 	}
 
